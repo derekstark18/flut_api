@@ -2,16 +2,18 @@
 import 'dart:convert';
 
 class CreatedByVO {
-  String role;
-  String id;
-  String name;
-
-
+ final String role;
+ final  String id;
+ final  String name;
   CreatedByVO({
     required this.role,
     required this.id,
     required this.name,
   });
+
+  
+
+
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,4 +34,7 @@ class CreatedByVO {
   String toJson() => json.encode(toMap());
 
   factory CreatedByVO.fromJson(String source) => CreatedByVO.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'CreatedByVO(role: $role, id: $id, name: $name)';
 }

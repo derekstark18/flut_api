@@ -5,65 +5,56 @@ import 'package:flut_api/data/vos/category_vo/category_vo.dart';
 import 'package:flut_api/data/vos/created_by_vo/created_by_vo.dart';
 
 class ProductVO {
-  String id;
-  String title;
-  int price;
-  CategoryVO category;
-  String description;
-  CreatedByVO createdBy;
-  String createdAt;
-  String updatedAt;
-  String slug;
-  String image;
-
-  
-  ProductVO({
-    required this.id,
-    required this.title,
-    required this.price,
-    required this.category,
-    required this.description,
-    required this.createdBy,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.slug,
-    required this.image,
-  });
-
-  
+  final String  id;
+  final String  title;
+  final int  price;
+  final CategoryVO category;
+  final String? description;
+  final CreatedByVO createdBy;
+  final String  createdAt;
+  final String   updatedAt;
+  final String  slug;
+  final String ? image;
 
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'title': title,
-      'price': price,
-      'category': category.toMap(),
-      'description': description,
-      'createdBy': createdBy.toMap(),
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-      'slug': slug,
-      'image': image,
-    };
-  }
+  ProductVO(this.id, this.title, this.price, this.category, this.description, this.createdBy, this.createdAt, this.updatedAt, this.slug, this.image,);
+
+  // Map<String, dynamic> toMap() {
+  //   return <String, dynamic>{
+  //     'id': id,
+  //     'title': title,
+  //     'price': price,
+  //     'category': category.toMap(),
+  //     'description': description,
+  //     'createdBy': createdBy.toMap(),
+  //     'createdAt': createdAt,
+  //     'updatedAt': updatedAt,
+  //     'slug': slug,
+  //     'image': image,
+  //   };
+  // }
 
   factory ProductVO.fromMap(Map<String, dynamic> map) {
     return ProductVO(
-      id: map['_id'] as String,
-      title: map['title'] as String,
-      price: map['price'] as int,
-      category: CategoryVO.fromMap(map['category'] as Map<String,dynamic>),
-      description: map['description'] as String,
-      createdBy: CreatedByVO.fromMap(map['createdBy'] as Map<String,dynamic>),
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String,
-      slug: map['slug'] as String,
-      image: map['image'] as String,
+      map['_id'] as String,
+      map['title']as String ,
+      map['price'] as int ,
+      CategoryVO.fromMap(map['category'] as Map<String,dynamic>),
+      map['description'] as String?,
+      CreatedByVO.fromMap(map['createdBy'] as Map<String,dynamic>),
+      map['createdAt'] as String ,
+      map['updatedAt']as String,
+      map['slug'] as String,
+      map['image'] as String?
     );
   }
 
-  String toJson() => json.encode(toMap());
+  // String toJson() => json.encode(toMap());
 
   factory ProductVO.fromJson(String source) => ProductVO.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'ProductVO(id: $id, title: $title, price: $price, category: $category, description: $description, createdBy: $createdBy, createdAt: $createdAt, updatedAt: $updatedAt, slug: $slug, image: $image)';
+  }
 }

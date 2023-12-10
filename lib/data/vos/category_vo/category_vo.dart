@@ -3,11 +3,11 @@ import 'dart:convert';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class CategoryVO {
 
-  String id;
+  final String id;
 
-  String name;
+  final String name;
 
-  String slug;
+  final String slug;
 
   CategoryVO({
     required this.id,
@@ -34,4 +34,7 @@ class CategoryVO {
   String toJson() => json.encode(toMap());
 
   factory CategoryVO.fromJson(String source) => CategoryVO.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'CategoryVO(id: $id, name: $name, slug: $slug)';
 }

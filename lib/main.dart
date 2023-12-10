@@ -1,19 +1,28 @@
 import 'package:flut_api/data/vos/fake_vo/fake_vo.dart';
 import 'package:flut_api/network/api/http.dart';
+import 'package:flut_api/network/api/product_http.dart';
 import 'package:flut_api/network/response/product_response.dart';
 import 'package:flutter/material.dart';
 
 void main() async{
 
+// try{
+
+//   List<FakeVO> dataList = await fetchFakeVO();
+
+//   for (var vo in dataList){
+//     print(vo.toString());
+//   }
+// }catch(e){
+//   print("error $e");
+// }
+
 try{
+  ProductResponse data = await fetch();
 
-  List<FakeVO> dataList = await fetchFakeVO();
-
-  for (var vo in dataList){
-    print(vo.toString());
-  }
+  print(data.toString());
 }catch(e){
-  print("error $e");
+ print("$e"); 
 }
   runApp(const MyApp());
 }
