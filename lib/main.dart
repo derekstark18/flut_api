@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flut_api/data/vos/fake_vo/fake_vo.dart';
 import 'package:flut_api/network/api/http.dart';
 import 'package:flut_api/network/api/product_http.dart';
+import 'package:flut_api/network/api/retrofit.dart';
 import 'package:flut_api/network/response/product_response.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +18,9 @@ void main() async{
 // }catch(e){
 //   print("error $e");
 // }
-
+  late ProductAPI _papi=ProductAPI(Dio());
 try{
-  ProductResponse data = await fetch();
+  ProductResponse data = await _papi.getAllProducts();
 
   print(data.toString());
 }catch(e){
